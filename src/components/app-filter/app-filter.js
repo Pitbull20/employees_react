@@ -2,7 +2,7 @@ import './app-filter.css';
 
 function AppFilter() {
 	return (
-		<div className="btn-grope">
+		<div className="btn-groupe">
 			<button 
 				className="btn btn-light" 
 				type='button'>
