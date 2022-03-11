@@ -1,25 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {StrictMode} from "react";
 import './index.css';
+import App from "./components/app/app";
 
 ReactDOM.render(
-  <React.StrictMode>
-
-  </React.StrictMode>,
+  <StrictMode>
+      <App />
+  </StrictMode>,
   document.getElementById('root')
 );
-
-
-let test = [1,2,3,6,7,8,9,0];
-
-
-function pop(arr) {
-    arr.length = arr.length - 1;  
-    console.log(arr);
-}
-
-pop(test);
-pop(test);
-pop(test);
-pop(test);
-pop(test);
