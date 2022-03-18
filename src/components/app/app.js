@@ -12,29 +12,31 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: (localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : [
-				{
-					name: 'Alex.W',
-					salary: 900,
-					rise: true,
-					increase: false,
-					id: 1,
-				},
-				{
-					name: 'Andrey.L',
-					salary: 5000,
-					rise: false,
-					increase: true,
-					id: 2,
-				},
-				{
-					name: 'Danil.G',
-					salary: 9000,
-					rise: false,
-					increase: false,
-					id: 3,
-				},
-			],
+			data: localStorage.getItem('data')
+				? JSON.parse(localStorage.getItem('data'))
+				: [
+						{
+							name: 'Alex.W',
+							salary: 900,
+							rise: true,
+							increase: false,
+							id: 1,
+						},
+						{
+							name: 'Andrey.L',
+							salary: 5000,
+							rise: false,
+							increase: true,
+							id: 2,
+						},
+						{
+							name: 'Danil.G',
+							salary: 9000,
+							rise: false,
+							increase: false,
+							id: 3,
+						},
+				  ],
 			term: '',
 			filter: 'all',
 		};
@@ -46,6 +48,10 @@ class App extends Component {
 				data: data.filter(el => el.id !== id),
 			};
 		});
+		localStorage.setItem(
+			'data',
+			JSON.stringify(this.state.data.filter(el => el.id !== id))
+		);
 	};
 	addItem = (name, salary) => {
 		this.setState(({ data }) => {
@@ -56,7 +62,7 @@ class App extends Component {
 				increase: false,
 				id: this.idCounter,
 			});
-			localStorage.setItem("data", JSON.stringify(dataClone));
+			localStorage.setItem('data', JSON.stringify(dataClone));
 			return {
 				data: dataClone,
 			};
