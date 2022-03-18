@@ -80,7 +80,7 @@ class App extends Component {
 				newItem,
 				...data.slice(index + 1),
 			];
-
+			localStorage.setItem('data', JSON.stringify(newArr));
 			return {
 				data: newArr,
 			};
@@ -95,6 +95,17 @@ class App extends Component {
 				return item;
 			}),
 		}));
+		localStorage.setItem(
+			'data',
+			JSON.stringify(
+				this.state.data.map(item => {
+					if (item.id === id) {
+						return { ...item, rise: !item.rise };
+					}
+					return item;
+				})
+			)
+		);
 	};
 	searchEmp = (items, term) => {
 		if (term.length === 0) {
