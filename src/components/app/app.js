@@ -12,7 +12,7 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: [
+			data: (localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : [
 				{
 					name: 'Alex.W',
 					salary: 900,
@@ -56,6 +56,7 @@ class App extends Component {
 				increase: false,
 				id: this.idCounter,
 			});
+			localStorage.setItem("data", JSON.stringify(dataClone));
 			return {
 				data: dataClone,
 			};
